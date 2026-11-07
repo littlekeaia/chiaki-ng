@@ -168,8 +168,8 @@ Item {
     }
 
     function showRendererFallbackDialog(reason) {
-        showInfoDialog(qsTr("Renderer Fallback"),
-                       qsTr("Vulkan renderer is unavailable and chiaki-ng switched to OpenGL.\n\nReason: %1").arg(reason));
+        showInfoDialog(qsTr("渲染器回退"),
+                       qsTr("Vulkan 渲染器不可用，chiaki-ng 已切换到 OpenGL。\n\n原因：%1").arg(reason));
     }
 
     function showRemindDialog(title, text, remotePlay, callback) {
@@ -488,7 +488,7 @@ Item {
                 Layout.alignment: Qt.AlignCenter
 
                 Button {
-                    text: qsTr("OK")
+                    text: qsTr("确定")
                     Material.background: Material.accent
                     flat: true
                     leftPadding: 50
@@ -551,9 +551,9 @@ Item {
             else
             {
                 if(ps5)
-                    root.showConfirmDialog(qsTr("Registration Type"), qsTr("Would you like to use automatic registration?"), () => root.autoRegister(true, host, ps5), () => root.autoRegister(false, host, ps5))
+                    root.showConfirmDialog(qsTr("注册类型"), qsTr("是否使用自动注册？"), () => root.autoRegister(true, host, ps5), () => root.autoRegister(false, host, ps5))
                 else
-                    root.showConfirmDialog(qsTr("Registration Type"), qsTr("Would you like to use automatic registration (must be main PS4 console registered to your PSN)?"), () => root.autoRegister(true, host, ps5), () => root.autoRegister(false, host, ps5))
+                    root.showConfirmDialog(qsTr("注册类型"), qsTr("是否使用自动注册（须为已注册到你的 PSN 的主 PS4 主机）？"), () => root.autoRegister(true, host, ps5), () => root.autoRegister(false, host, ps5))
             }
         }
 

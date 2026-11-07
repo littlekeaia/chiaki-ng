@@ -168,11 +168,11 @@ public:
         valueFont.setBold(true);
 
         bitrateRow = makeRow(tr("Mbps"), QColor(QStringLiteral("#00a7ff")), titleFont, valueFont, bitrateValue);
-        queueRow = makeRow(tr("queue depth avg"), QColor(QStringLiteral("#90caf9")), titleFont, valueFont, queueDepthValue);
-        pendingRow = makeRow(tr("pending frame age"), QColor(QStringLiteral("#90caf9")), titleFont, valueFont, pendingAgeValue);
-        packetLossRow = makeRow(tr("packet loss"), QColor(QStringLiteral("#ef9a9a")), titleFont, valueFont, packetLossValue);
-        droppedFramesRow = makeRow(tr("dropped frames"), QColor(QStringLiteral("#ef9a9a")), titleFont, valueFont, droppedFramesValue);
-        lostFramesRow = makeRow(tr("lost frames"), QColor(QStringLiteral("#ef9a9a")), titleFont, valueFont, lostFramesValue);
+        queueRow = makeRow(tr("队列深度平均"), QColor(QStringLiteral("#90caf9")), titleFont, valueFont, queueDepthValue);
+        pendingRow = makeRow(tr("待处理帧时长"), QColor(QStringLiteral("#90caf9")), titleFont, valueFont, pendingAgeValue);
+        packetLossRow = makeRow(tr("丢包"), QColor(QStringLiteral("#ef9a9a")), titleFont, valueFont, packetLossValue);
+        droppedFramesRow = makeRow(tr("丢帧"), QColor(QStringLiteral("#ef9a9a")), titleFont, valueFont, droppedFramesValue);
+        lostFramesRow = makeRow(tr("丢失帧"), QColor(QStringLiteral("#ef9a9a")), titleFont, valueFont, lostFramesValue);
 
         outer->addWidget(panel, 0, Qt::AlignRight | Qt::AlignVCenter);
 
@@ -4954,8 +4954,8 @@ void QmlMainWindow::init(Settings *settings, bool exit_app_on_stream_exit)
             // The last launch closed before Vulkan showed a frame, which is how a crash inside the
             // Vulkan driver or a third-party Vulkan layer looks; keep OpenGL until switched back
             settings->SetRenderBackend(RenderBackend::OpenGL);
-            fallbackToOpenGL(tr("chiaki-ng closed while starting Vulkan last time, so it now uses OpenGL. "
-                                "You can switch back under Settings > Video > Renderer Backend."));
+            fallbackToOpenGL(tr("上次启动 Vulkan 时 chiaki-ng 关闭了，因此现在改用 OpenGL。 "
+                                "你可以在 设置 > 视频 > 渲染后端 中切换回来。"));
             goto renderer_backend_ready;
         }
         settings->SetVulkanStartupPending(true);
@@ -4991,14 +4991,14 @@ void QmlMainWindow::init(Settings *settings, bool exit_app_on_stream_exit)
         };
         placebo_vk_inst = pl_vk_inst_create(placebo_log, &vk_inst_params);
         if (!placebo_vk_inst) {
-            fallbackToOpenGL(QStringLiteral("Failed to create Vulkan instance"));
+            fallbackToOpenGL(QStringLiteral("创建 Vulkan 实例失败"));
         } else {
 
 #define GET_PROC(name_) { \
     vk_funcs.name_ = reinterpret_cast<decltype(vk_funcs.name_)>( \
         placebo_vk_inst->get_proc_addr(placebo_vk_inst->instance, #name_)); \
     if (!vk_funcs.name_) { \
-        fallbackToOpenGL(QStringLiteral("Failed to resolve Vulkan symbol %1").arg(#name_)); \
+        fallbackToOpenGL(QStringLiteral("解析 Vulkan 符号失败：%1").arg(#name_)); \
         goto vulkan_setup_done; \
     } }
         GET_PROC(vkGetDeviceProcAddr)
@@ -5035,14 +5035,14 @@ void QmlMainWindow::init(Settings *settings, bool exit_app_on_stream_exit)
         };
         placebo_vulkan = pl_vulkan_create(placebo_log, &vulkan_params);
         if (!placebo_vulkan) {
-            fallbackToOpenGL(QStringLiteral("Failed to create Vulkan device"));
+            fallbackToOpenGL(QStringLiteral("创建 Vulkan 设备失败"));
         } else {
 
 #define GET_PROC(name_) { \
     vk_funcs.name_ = reinterpret_cast<decltype(vk_funcs.name_)>( \
         vk_funcs.vkGetDeviceProcAddr(placebo_vulkan->device, #name_)); \
     if (!vk_funcs.name_) { \
-        fallbackToOpenGL(QStringLiteral("Failed to resolve Vulkan symbol %1").arg(#name_)); \
+        fallbackToOpenGL(QStringLiteral("解析 Vulkan 符号失败：%1").arg(#name_)); \
         goto vulkan_setup_done; \
     } }
         GET_PROC(vkWaitSemaphores)
@@ -5093,7 +5093,7 @@ vulkan_setup_done:
         if (!qt_vk_inst->create()) {
             delete qt_vk_inst;
             qt_vk_inst = nullptr;
-            fallbackToOpenGL(QStringLiteral("Failed to create QVulkanInstance"));
+            fallbackToOpenGL(QStringLiteral("创建 QVulkanInstance 失败"));
         }
     }
 
@@ -6005,9 +6005,9 @@ void QmlMainWindow::createSwapchain()
                 << "surface_renderable=" << surface_renderable;
             if (surface_renderable && failures >= 60 && failure_duration_us >= 3000000) {
                 handleVulkanRendererFallback(
-                    tr("Vulkan renderer stalled"),
-                    tr("The Vulkan surface could not recover. Chiaki-ng will relaunch with OpenGL for this run only."),
-                    tr("Vulkan surface creation failed repeatedly while the window was visible. OpenGL is being used for this launch only."));
+                    tr("Vulkan 渲染器停滞"),
+                    tr("Vulkan 表面无法恢复。chiaki-ng 将在本次运行中以 OpenGL 重新启动。"),
+                    tr("窗口可见期间 Vulkan 表面多次创建失败。本次启动仅使用 OpenGL。"));
             } else {
                 swapchain_recreate_pending.storeRelease(1);
                 QMetaObject::invokeMethod(this, [this]() {
@@ -6403,9 +6403,9 @@ void QmlMainWindow::confirmVulkanStartup()
 void QmlMainWindow::handleVulkanDeviceLost(const QString &reason)
 {
     handleVulkanRendererFallback(
-        tr("Vulkan device lost"),
-        tr("The Vulkan renderer stopped responding. Chiaki-ng will relaunch with OpenGL for this run only.\n\nReason: %1").arg(reason),
-        tr("Vulkan device was lost. OpenGL is being used for this launch only. Reason: %1").arg(reason));
+        tr("Vulkan 设备丢失"),
+        tr("Vulkan 渲染器无响应。chiaki-ng 将在本次运行中以 OpenGL 重新启动。\n\n原因：%1").arg(reason),
+        tr("Vulkan 设备丢失。本次启动仅使用 OpenGL。原因：%1").arg(reason));
 }
 
 void QmlMainWindow::handleVulkanRendererFallback(const QString &title, const QString &message, const QString &fallback_reason)
@@ -7012,9 +7012,9 @@ void QmlMainWindow::render()
                 << "surface_renderable=" << surface_renderable;
             if (surface_renderable && failures >= 60 && failure_duration_us >= 3000000) {
                 handleVulkanRendererFallback(
-                    tr("Vulkan renderer stalled"),
-                    tr("The Vulkan swapchain could not recover. Chiaki-ng will relaunch with OpenGL for this run only."),
-                    tr("Vulkan swapchain failed repeatedly while the window was visible. OpenGL is being used for this launch only."));
+                    tr("Vulkan 渲染器停滞"),
+                    tr("Vulkan 交换链无法恢复。chiaki-ng 将在本次运行中以 OpenGL 重新启动。"),
+                    tr("窗口可见期间 Vulkan 交换链多次失败。本次启动仅使用 OpenGL。"));
             } else {
                 swapchain_recreate_pending.storeRelease(1);
                 QMetaObject::invokeMethod(this, [this]() {

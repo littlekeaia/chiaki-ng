@@ -69,7 +69,7 @@ void JsonRequester::onRequestFinished(QNetworkReply* reply) {
         emit requestFinished(url, jsonDocument);
     } else {
         const bool timedOut = reply->property("timed_out").toBool();
-        const QString errorString = timedOut ? QStringLiteral("Request timed out") : reply->errorString();
+        const QString errorString = timedOut ? QStringLiteral("请求超时") : reply->errorString();
         emit requestError(url, errorString, reply->error());
     }
 

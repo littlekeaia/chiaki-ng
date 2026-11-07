@@ -2043,9 +2043,9 @@ void QmlSettings::exportSettings()
     QString profile = settings->GetCurrentProfile();
     if(profile.isEmpty())
         profile = "Default";
-    QString fileName = QFileDialog::getSaveFileName(QApplication::focusWidget(), tr("Export %1 Profile To File").arg(profile),
+    QString fileName = QFileDialog::getSaveFileName(QApplication::focusWidget(), tr("导出 %1 配置文件到文件").arg(profile),
                                                     QStandardPaths::writableLocation(QStandardPaths::DesktopLocation) + "/chiaki-ng-" + profile,
-                                                    tr("Settings files (*.ini)"),
+                                                    tr("设置文件 (*.ini)"),
                                                     nullptr,
                                                     QFileDialog::DontUseNativeDialog | QFileDialog::DontConfirmOverwrite);
     if(fileName.isEmpty())
@@ -2055,9 +2055,9 @@ void QmlSettings::exportSettings()
 
 void QmlSettings::importSettings()
 {
-    QString fileName = QFileDialog::getOpenFileName(QApplication::focusWidget(), tr("Import Profile From File"),
+    QString fileName = QFileDialog::getOpenFileName(QApplication::focusWidget(), tr("从文件导入配置文件"),
                                                     QStandardPaths::writableLocation(QStandardPaths::DownloadLocation),
-                                                    tr("Settings files (*.ini)"),
+                                                    tr("设置文件 (*.ini)"),
                                                     nullptr,
                                                     QFileDialog::DontUseNativeDialog);
     if(fileName.isEmpty())
@@ -2068,7 +2068,7 @@ void QmlSettings::importSettings()
 
 QString QmlSettings::chooseSteamBasePath()
 {
-    QString fileName = QFileDialog::getExistingDirectory(QApplication::focusWidget(), tr("Choose Steam Base Path"),
+    QString fileName = QFileDialog::getExistingDirectory(QApplication::focusWidget(), tr("选择 Steam 基础路径"),
                                                     QStandardPaths::writableLocation(QStandardPaths::DownloadLocation),
                                                     QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks | QFileDialog::DontUseNativeDialog);
     printf("Chosen filename: %s", fileName.toUtf8().constData());
@@ -2077,9 +2077,9 @@ QString QmlSettings::chooseSteamBasePath()
 
 void QmlSettings::exportPlaceboSettings()
 {
-    QString fileName = QFileDialog::getSaveFileName(QApplication::focusWidget(), tr("Export Placebo Renderer Settings To File"),
+    QString fileName = QFileDialog::getSaveFileName(QApplication::focusWidget(), tr("导出 Placebo 渲染器设置到文件"),
                                                     QStandardPaths::writableLocation(QStandardPaths::DesktopLocation) + "/chiaki-ng-placebo",
-                                                    tr("Settings files (*.ini)"),
+                                                    tr("设置文件 (*.ini)"),
                                                     nullptr,
                                                     QFileDialog::DontUseNativeDialog | QFileDialog::DontConfirmOverwrite);
     if(fileName.isEmpty())
@@ -2089,9 +2089,9 @@ void QmlSettings::exportPlaceboSettings()
 
 void QmlSettings::importPlaceboSettings()
 {
-    QString fileName = QFileDialog::getOpenFileName(QApplication::focusWidget(), tr("Import Placebo Renderer Settings From File"),
+    QString fileName = QFileDialog::getOpenFileName(QApplication::focusWidget(), tr("从文件导入 Placebo 渲染器设置"),
                                                     QStandardPaths::writableLocation(QStandardPaths::DownloadLocation),
-                                                    tr("Settings files (*.ini)"),
+                                                    tr("设置文件 (*.ini)"),
                                                     nullptr,
                                                     QFileDialog::DontUseNativeDialog);
     if(fileName.isEmpty())

@@ -14,9 +14,9 @@ DialogView {
     property bool submitting: false
     property bool closing: false
     property var psnurl: ""
-    title: qsTr("PSN Login")
+    title: qsTr("PSN 登录")
     buttonVisible: false
-    buttonText: qsTr("Get Account ID")
+    buttonText: qsTr("获取账号 ID")
     buttonEnabled: !submitting && url.text.trim()
     onAccepted: {
         submitting = true;
@@ -90,7 +90,7 @@ DialogView {
                         Layout.fillHeight: true
                         Layout.preferredWidth: 350
                         flat: true
-                        text: "reload + clear cookies"
+                        text: "重新加载 + 清除 Cookie"
                         Image {
                             anchors {
                                 left: parent.left
@@ -133,7 +133,7 @@ DialogView {
                             source: "qrc:/icons/r1.svg"
                         }
                         focusPolicy: Qt.NoFocus
-                        text: "Use external browser"
+                        text: "使用外部浏览器"
                         onClicked: {
                             nativeLoginForm.visible = false;
                             psnLoginToolbar.visible = false;
@@ -185,7 +185,7 @@ DialogView {
                 columnSpacing: 20
                 Label {
                     id: nativeErrorHeader
-                    text: "Retrieving PSN account ID failed with error: "
+                    text: "获取 PSN 账号 ID 失败，错误："
                     Layout.fillHeight: true
                     Layout.preferredWidth: 400
                     Layout.leftMargin: 20
@@ -200,7 +200,7 @@ DialogView {
 
                 Label {
                     id: retryButton
-                    text: "Retry process"
+                    text: "重试流程"
                     Layout.fillHeight: true
                     Layout.preferredWidth: 300
                     Layout.leftMargin: 20
@@ -208,7 +208,7 @@ DialogView {
                 C.Button {
                     firstInFocusChain: true
                     lastInFocusChain: true
-                    text: "Retry"
+                    text: "重试"
                     onClicked: {
                         nativeErrorGrid.visible = false;
                         nativeErrorLabel.text = "";
@@ -289,7 +289,7 @@ DialogView {
             Label {
                 id: errorHeader
                 visible: false
-                text: "Retrieving PSN account ID failed with error"
+                text: "获取 PSN 账号 ID 失败，错误"
             }
 
             Label {
@@ -298,7 +298,7 @@ DialogView {
             }
 
             Label {
-                text: qsTr("Open Web Browser with copied URL")
+                text: qsTr("在浏览器中打开已复制 URL")
                 visible: psnurl
             }
 
@@ -312,7 +312,7 @@ DialogView {
 
             C.Button {
                 id: copyUrl
-                text: qsTr("Click to Re-Copy URL")
+                text: qsTr("点击重新复制 URL")
                 onClicked: {
                     openurl.selectAll()
                     openurl.copy()
@@ -324,7 +324,7 @@ DialogView {
             }
 
             Label {
-                text: qsTr("Redirect URL from Web Browser")
+                text: qsTr("来自浏览器的重定向 URL")
             }
 
             TextField {
@@ -347,7 +347,7 @@ DialogView {
                 KeyNavigation.right: pasteUrl
                 C.Button {
                     id: pasteUrl
-                    text: qsTr("Click to Paste URL")
+                    text: qsTr("点击粘贴 URL")
                     anchors {
                         left: parent.right
                         verticalCenter: parent.verticalCenter
@@ -381,7 +381,7 @@ DialogView {
                 id: formLabel
                 Layout.alignment: Qt.AlignCenter
                 Layout.bottomMargin: 50
-                text: qsTr("This requires your PSN privacy settings to allow anyone to find you in your search")
+                text: qsTr("这需要你的 PSN 隐私设置允许他人通过搜索找到你")
             }
 
             C.TextField {
@@ -390,7 +390,7 @@ DialogView {
                 Layout.preferredWidth: 400
                 Layout.alignment: Qt.AlignCenter
                 firstInFocusChain: true
-                placeholderText: qsTr("Username")
+                placeholderText: qsTr("用户名")
                 onAccepted: submitButton.clicked()
             }
 
@@ -399,7 +399,7 @@ DialogView {
                 Layout.preferredWidth: 400
                 Layout.alignment: Qt.AlignCenter
                 lastInFocusChain: true
-                text: qsTr("Submit")
+                text: qsTr("提交")
                 onClicked: {
                     const username = usernameField.text.trim();
                     if (!username.length || !enabled)
@@ -414,7 +414,7 @@ DialogView {
                                 dialog.close();
                             } else {
                                 enabled = true;
-                                formLabel.text = qsTr("Error: %1!").arg(response["error"]);
+                                formLabel.text = qsTr("错误：%1！").arg(response["error"]);
                             }
                         }
                     }

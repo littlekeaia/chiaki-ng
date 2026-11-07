@@ -2362,37 +2362,37 @@ QString Settings::GetChiakiControllerButtonName(int button)
 {
 	switch(button)
 	{
-		case CHIAKI_CONTROLLER_BUTTON_CROSS      : return tr("Cross");
-		case CHIAKI_CONTROLLER_BUTTON_MOON       : return tr("Moon");
-		case CHIAKI_CONTROLLER_BUTTON_BOX        : return tr("Box");
-		case CHIAKI_CONTROLLER_BUTTON_PYRAMID    : return tr("Pyramid");
-		case CHIAKI_CONTROLLER_BUTTON_DPAD_LEFT  : return tr("D-Pad Left");
-		case CHIAKI_CONTROLLER_BUTTON_DPAD_RIGHT : return tr("D-Pad Right");
-		case CHIAKI_CONTROLLER_BUTTON_DPAD_UP    : return tr("D-Pad Up");
-		case CHIAKI_CONTROLLER_BUTTON_DPAD_DOWN  : return tr("D-Pad Down");
+		case CHIAKI_CONTROLLER_BUTTON_CROSS      : return tr("叉");
+		case CHIAKI_CONTROLLER_BUTTON_MOON       : return tr("月");
+		case CHIAKI_CONTROLLER_BUTTON_BOX        : return tr("方块");
+		case CHIAKI_CONTROLLER_BUTTON_PYRAMID    : return tr("三角");
+		case CHIAKI_CONTROLLER_BUTTON_DPAD_LEFT  : return tr("十字键左");
+		case CHIAKI_CONTROLLER_BUTTON_DPAD_RIGHT : return tr("十字键右");
+		case CHIAKI_CONTROLLER_BUTTON_DPAD_UP    : return tr("十字键上");
+		case CHIAKI_CONTROLLER_BUTTON_DPAD_DOWN  : return tr("十字键下");
 		case CHIAKI_CONTROLLER_BUTTON_L1         : return tr("L1");
 		case CHIAKI_CONTROLLER_BUTTON_R1         : return tr("R1");
 		case CHIAKI_CONTROLLER_BUTTON_L3         : return tr("L3");
 		case CHIAKI_CONTROLLER_BUTTON_R3         : return tr("R3");
-		case CHIAKI_CONTROLLER_BUTTON_OPTIONS    : return tr("Options");
-		case CHIAKI_CONTROLLER_BUTTON_SHARE      : return tr("Share");
-		case CHIAKI_CONTROLLER_BUTTON_TOUCHPAD   : return tr("Touchpad");
+		case CHIAKI_CONTROLLER_BUTTON_OPTIONS    : return tr("选项");
+		case CHIAKI_CONTROLLER_BUTTON_SHARE      : return tr("分享");
+		case CHIAKI_CONTROLLER_BUTTON_TOUCHPAD   : return tr("触摸板");
 		case CHIAKI_CONTROLLER_BUTTON_PS         : return tr("PS");
 		case CHIAKI_CONTROLLER_ANALOG_BUTTON_L2  : return tr("L2");
 		case CHIAKI_CONTROLLER_ANALOG_BUTTON_R2  : return tr("R2");
-		case static_cast<int>(ControllerButtonExt::ANALOG_STICK_LEFT_X_UP)    : return tr("Left Stick Right");
-		case static_cast<int>(ControllerButtonExt::ANALOG_STICK_LEFT_Y_UP)    : return tr("Left Stick Up");
-		case static_cast<int>(ControllerButtonExt::ANALOG_STICK_RIGHT_X_UP)   : return tr("Right Stick Right");
-		case static_cast<int>(ControllerButtonExt::ANALOG_STICK_RIGHT_Y_UP)   : return tr("Right Stick Up");
-		case static_cast<int>(ControllerButtonExt::ANALOG_STICK_LEFT_X_DOWN)  : return tr("Left Stick Left");
-		case static_cast<int>(ControllerButtonExt::ANALOG_STICK_LEFT_Y_DOWN)  : return tr("Left Stick Down");
-		case static_cast<int>(ControllerButtonExt::ANALOG_STICK_RIGHT_X_DOWN) : return tr("Right Stick Left");
-		case static_cast<int>(ControllerButtonExt::ANALOG_STICK_RIGHT_Y_DOWN) : return tr("Right Stick Down");
-		case static_cast<int>(ControllerButtonExt::ANALOG_STICK_LEFT_X) : return tr("Left Stick X");
-		case static_cast<int>(ControllerButtonExt::ANALOG_STICK_LEFT_Y) : return tr("Left Stick Y");
-		case static_cast<int>(ControllerButtonExt::ANALOG_STICK_RIGHT_X) : return tr("Right Stick X");
-		case static_cast<int>(ControllerButtonExt::ANALOG_STICK_RIGHT_Y) : return tr("Right Stick Y");
-		case static_cast<int>(ControllerButtonExt::MISC1) : return tr("MIC");
+		case static_cast<int>(ControllerButtonExt::ANALOG_STICK_LEFT_X_UP)    : return tr("左摇杆右");
+		case static_cast<int>(ControllerButtonExt::ANALOG_STICK_LEFT_Y_UP)    : return tr("左摇杆上");
+		case static_cast<int>(ControllerButtonExt::ANALOG_STICK_RIGHT_X_UP)   : return tr("右摇杆右");
+		case static_cast<int>(ControllerButtonExt::ANALOG_STICK_RIGHT_Y_UP)   : return tr("右摇杆上");
+		case static_cast<int>(ControllerButtonExt::ANALOG_STICK_LEFT_X_DOWN)  : return tr("左摇杆左");
+		case static_cast<int>(ControllerButtonExt::ANALOG_STICK_LEFT_Y_DOWN)  : return tr("左摇杆下");
+		case static_cast<int>(ControllerButtonExt::ANALOG_STICK_RIGHT_X_DOWN) : return tr("右摇杆左");
+		case static_cast<int>(ControllerButtonExt::ANALOG_STICK_RIGHT_Y_DOWN) : return tr("右摇杆下");
+		case static_cast<int>(ControllerButtonExt::ANALOG_STICK_LEFT_X) : return tr("左摇杆 X");
+		case static_cast<int>(ControllerButtonExt::ANALOG_STICK_LEFT_Y) : return tr("左摇杆 Y");
+		case static_cast<int>(ControllerButtonExt::ANALOG_STICK_RIGHT_X) : return tr("右摇杆 X");
+		case static_cast<int>(ControllerButtonExt::ANALOG_STICK_RIGHT_Y) : return tr("右摇杆 Y");
+		case static_cast<int>(ControllerButtonExt::MISC1) : return tr("麦克风");
 		default: return "Unknown";
 	}
 }

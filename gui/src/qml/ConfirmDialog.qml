@@ -59,7 +59,7 @@ Dialog {
             spacing: 20
 
             Button {
-                text: qsTr("Yes")
+                text: qsTr("是")
                 Material.background: Material.accent
                 flat: true
                 leftPadding: 50
@@ -81,7 +81,7 @@ Dialog {
 
             Button {
                 Material.background: Material.accent
-                text: qsTr("No")
+                text: qsTr("否")
                 flat: true
                 leftPadding: 50
                 onClicked: dialog.reject()

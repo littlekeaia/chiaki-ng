@@ -12,15 +12,15 @@ DialogView {
     property bool opening: false
     property bool succeeded: false
     property bool fromReminder
-    title: qsTr("Create Non-Steam Game")
-    buttonText: qsTr("Create")
+    title: qsTr("创建非 Steam 游戏")
+    buttonText: qsTr("创建")
     buttonEnabled: name.text.trim() && !opening
     function close() {
         root.closeDialog();
         if(dialog.fromReminder && Chiaki.settings.remotePlayAsk)
         {
             if(!Chiaki.settings.psnRefreshToken || !Chiaki.settings.psnAuthToken || !Chiaki.settings.psnAuthTokenExpiry || !Chiaki.settings.psnAccountId)
-                root.showRemindDialog(qsTr("Remote Play via PSN"), qsTr("Would you like to connect to PSN?\nThis enables:\n- Automatic registration\n- Playing outside of your home network without port forwarding?") + "\n\n" + qsTr("(Note: If you select no now and want to do this later, go to the Config section of the settings.)"), true, () => root.showPSNTokenDialog(false));
+                root.showRemindDialog(qsTr("通过 PSN 遥控游玩"), qsTr("是否连接 PSN？\n启用后可：\n- 自动注册\n- 在家庭网络之外游玩而无需端口转发？") + "\n\n" + qsTr("（注意：若现在选否，之后可到设置的「配置」分区开启。）"), true, () => root.showPSNTokenDialog(false));
             else
                 Chiaki.settings.remotePlayAsk = false;
         }
@@ -60,7 +60,7 @@ DialogView {
 
             Label {
                 Layout.alignment: Qt.AlignRight
-                text: qsTr("Steam Game Name")
+                text: qsTr("Steam 游戏名称")
             }
 
             C.TextField {
@@ -72,7 +72,7 @@ DialogView {
 
             Label {
                 Layout.alignment: Qt.AlignRight
-                text: qsTr("Launch Options [Optional]")
+                text: qsTr("启动选项［可选］")
             }
 
             C.TextField {
@@ -83,7 +83,7 @@ DialogView {
 
             Label {
                 Layout.alignment: Qt.AlignRight
-                text: qsTr("Custom Steam Base Path (Optional)")
+                text: qsTr("自定义 Steam 基础路径（可选）")
             }
 
             Label {
@@ -97,7 +97,7 @@ DialogView {
 
             C.Button {
                 id: choosePathButton
-                text: qsTr("Choose new steam base path")
+                text: qsTr("选择新的 Steam 基础路径")
                 onClicked: {
                     shortcutGrid.steamBasePath = Chiaki.settings.chooseSteamBasePath();
                 }
@@ -111,7 +111,7 @@ DialogView {
                 parent: Overlay.overlay
                 x: Math.round((root.width - width) / 2)
                 y: Math.round((root.height - height) / 2)
-                title: qsTr("Create non-Steam game")
+                title: qsTr("创建非 Steam 游戏")
                 modal: true
                 closePolicy: Popup.NoAutoClose
                 standardButtons: Dialog.Cancel
@@ -164,7 +164,7 @@ DialogView {
             parent: Overlay.overlay
             x: Math.round((root.width - width) / 2)
             y: Math.round((root.height - height) / 2)
-            title: qsTr("Please Restart Steam")
+            title: qsTr("请重启 Steam")
             modal: true
             closePolicy: Popup.NoAutoClose
             standardButtons: Dialog.Close
@@ -184,7 +184,7 @@ DialogView {
 
                 Label {
                     id: restartArea
-                    text: "In order for " + name.text.trim() + " to appear in Steam,\nSteam must be restarted!"
+                    text: "为了让 " + name.text.trim() + " 显示在 Steam 中，\n必须重启 Steam！"
                     wrapMode: Text.Wrap
                     Keys.onReturnPressed: if (restartDialog.standardButtons == Dialog.Close) restartDialog.close()
                     Keys.onEscapePressed: restartDialog.close()

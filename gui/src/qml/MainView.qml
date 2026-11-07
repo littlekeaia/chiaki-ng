@@ -14,11 +14,11 @@ Pane {
         {
             root.initialAsk = true;
             if(Chiaki.settings.addSteamShortcutAsk && (typeof Chiaki.createSteamShortcut === "function"))
-                root.showRemindDialog(qsTr("Official Steam artwork + controller layout"), qsTr("Would you like to either create a new non-Steam game for chiaki-ng\nor update an existing non-Steam game with the official artwork and controller layout?") + "\n\n" + qsTr("(Note: If you select no now and want to do this later, click the button or press R3 from the main menu.)"), false, () => root.showSteamShortcutDialog(true));
+                root.showRemindDialog(qsTr("官方 Steam 封面图 + 手柄布局"), qsTr("是否为 chiaki-ng 创建新的非 Steam 游戏，\n或用官方封面图和手柄布局更新已有的非 Steam 游戏？") + "\n\n" + qsTr("（注意：若现在选否，之后想设置可点击按钮或在主菜单按 R3。）"), false, () => root.showSteamShortcutDialog(true));
             else if(Chiaki.settings.remotePlayAsk)
             {
                 if(!Chiaki.settings.psnRefreshToken || !Chiaki.settings.psnAuthToken || !Chiaki.settings.psnAuthTokenExpiry || !Chiaki.settings.psnAccountId)
-                    root.showRemindDialog(qsTr("Remote Play via PSN"), qsTr("Would you like to connect to PSN?\nThis enables:\n- Automatic registration\n- Playing outside of your home network without port forwarding?") + "\n\n" + qsTr("(Note: If you select no now and want to do this later, go to the Config section of the settings.)"), true, () => root.showPSNTokenDialog(false));
+                    root.showRemindDialog(qsTr("通过 PSN 遥控游玩"), qsTr("是否连接 PSN？\n启用后可：\n- 自动注册\n- 在家庭网络之外游玩而无需端口转发？") + "\n\n" + qsTr("（注意：若现在选否，之后可到设置的「配置」分区开启。）"), true, () => root.showPSNTokenDialog(false));
                 else
                     Chiaki.settings.remotePlayAsk = false;
             }
@@ -44,7 +44,7 @@ Pane {
     Keys.onReturnPressed: if (hostsView.currentItem) hostsView.currentItem.connectToHost()
     Keys.onYesPressed: if (hostsView.currentItem) hostsView.currentItem.wakeUpHost()
     Keys.onNoPressed: if (hostsView.currentItem) hostsView.currentItem.deleteHost()
-    Keys.onEscapePressed: root.showConfirmDialog(qsTr("Quit"), qsTr("Are you sure you want to quit?"), () => Qt.quit())
+    Keys.onEscapePressed: root.showConfirmDialog(qsTr("退出"), qsTr("确定要退出吗？"), () => Qt.quit())
     Keys.onPressed: (event) => {
         if (event.modifiers)
             return;
@@ -101,7 +101,7 @@ Pane {
                 Layout.fillHeight: true
                 Layout.preferredWidth: 350
                 flat: true
-                text: "Create Steam Shortcut"
+                text: "创建 Steam 快捷方式"
                 focusPolicy: Qt.NoFocus
                 onClicked: root.showSteamShortcutDialog(false)
                 Material.roundedScale: Material.SmallScale
@@ -123,7 +123,7 @@ Pane {
                 Layout.fillHeight: true
                 Layout.preferredWidth: 400
                 flat: true
-                text: "Refresh PSN Hosts"
+                text: "刷新 PSN 主机"
                 icon.source: "qrc:/icons/r1.svg"
                 focusPolicy: Qt.NoFocus
                 onClicked: Chiaki.refreshPsnToken();
@@ -144,7 +144,7 @@ Pane {
                 Layout.fillHeight: true
                 Layout.preferredWidth: 300
                 flat: true
-                text: "Add Manual Host"
+                text: "添加手动主机"
                 focusPolicy: Qt.NoFocus
                 onClicked: root.showManualHostDialog()
                 Material.roundedScale: Material.SmallScale
@@ -227,10 +227,10 @@ Pane {
 
             function deleteHost() {
                 if (modelData.manual)
-                    root.showConfirmDialog(qsTr("Delete Console"), qsTr("Are you sure you want to delete this console?"), () => {Chiaki.deleteHost(index)});
+                    root.showConfirmDialog(qsTr("删除主机"), qsTr("确定要删除此主机吗？"), () => {Chiaki.deleteHost(index)});
                         
                 else if (modelData.discovered && !modelData.registered)
-                    root.showConfirmDialog(qsTr("Hide Console"), qsTr("Are you sure you want to hide this console?") + "\n\n" + qsTr("Note: You can unhide from the Consoles section of the Settings under Hidden Consoles"), () => Chiaki.hideHost(modelData.mac, modelData.name));
+                    root.showConfirmDialog(qsTr("隐藏主机"), qsTr("确定要隐藏此主机吗？") + "\n\n" + qsTr("注意：可在设置的「主机」分区中通过「已隐藏主机」取消隐藏"), () => Chiaki.hideHost(modelData.mac, modelData.name));
 
             }
 
@@ -263,15 +263,15 @@ Pane {
                         if (modelData.name)
                             t += modelData.name + "\n";
                         if (modelData.address)
-                            t += qsTr("Address: %1").arg(Chiaki.settings.streamerMode ? "hidden" : modelData.address);
+                            t += qsTr("地址：%1").arg(Chiaki.settings.streamerMode ? "hidden" : modelData.address);
                         if (modelData.mac)
-                            t += "\n" + qsTr("ID: %1 (%2)").arg(Chiaki.settings.streamerMode ? "hidden" : modelData.mac).arg(modelData.registered ? qsTr("registered") : qsTr("unregistered"));
+                            t += "\n" + qsTr("ID：%1（%2）").arg(Chiaki.settings.streamerMode ? "hidden" : modelData.mac).arg(modelData.registered ? qsTr("已注册") : qsTr("未注册"));
                         if (modelData.duid)
                         {
                             if(modelData.discovered)
-                                t += "\n" + qsTr("Automatic Registration Available");
+                                t += "\n" + qsTr("可自动注册");
                             else
-                                t += "\n" + qsTr("Remote Connection via PSN");
+                                t += "\n" + qsTr("通过 PSN 远程连接");
                         } 
                         else
                         {
@@ -279,12 +279,12 @@ Pane {
                             if(modelData.discovered)
                             {
                                 if(modelData.manual)
-                                    t += qsTr("discovered + manual")
+                                    t += qsTr("已发现 + 手动")
                                 else
-                                    t += qsTr("discovered");
+                                    t += qsTr("已发现");
                             }
                             else
-                                t += qsTr("manual");
+                                t += qsTr("手动");
                         }
                         return t;
                     }
@@ -296,13 +296,13 @@ Pane {
                         let t = "";
                         if(modelData.duid)
                             return t;
-                        t += qsTr("State: %1").arg(modelData.state);
+                        t += qsTr("状态：%1").arg(modelData.state);
                         if(!modelData.discovered)
                             return t;
                         if (modelData.app)
-                            t += "\n" + qsTr("App: %1").arg(modelData.app);
+                            t += "\n" + qsTr("应用：%1").arg(modelData.app);
                         if (modelData.titleId)
-                            t += "\n" + qsTr("Title ID: %1").arg(modelData.titleId);
+                            t += "\n" + qsTr("标题 ID：%1").arg(modelData.titleId);
                         return t;
                     }
                 }
@@ -315,7 +315,7 @@ Pane {
 
                     Button {
                         Layout.alignment: Qt.AlignCenter
-                        text: modelData.manual ? qsTr("Delete") : qsTr("Hide")
+                        text: modelData.manual ? qsTr("删除") : qsTr("隐藏")
                         flat: true
                         padding: 20
                         leftPadding: delegate.highlighted ? 50 : undefined
@@ -340,7 +340,7 @@ Pane {
 
                     Button {
                         Layout.alignment: Qt.AlignCenter
-                        text: qsTr("Wake Up")
+                        text: qsTr("唤醒")
                         flat: true
                         padding: 20
                         leftPadding: delegate.highlighted ? 50 : undefined
@@ -365,7 +365,7 @@ Pane {
 
                     Button {
                         Layout.alignment: Qt.AlignCenter
-                        text: qsTr("Update Console Pin")
+                        text: qsTr("更新主机 PIN 码")
                         flat: true
                         padding: 20
                         leftPadding: delegate.highlighted ? 50 : undefined

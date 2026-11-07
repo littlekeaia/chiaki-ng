@@ -20,7 +20,7 @@ Rectangle {
             return;
         allowClose = false;
         cancelling = true;
-        infoLabel.text = qsTr("Cancelling connection with console over PSN ...");
+        infoLabel.text = qsTr("正在通过 PSN 取消与主机的连接…");
         Chiaki.psnCancel(false);
     }
 
@@ -57,7 +57,7 @@ Rectangle {
         anchors.centerIn: parent
         opacity: textVisible ? 1.0: 0.0
         visible: opacity
-        text: qsTr("Establishing connection with console over PSN ...")
+        text: qsTr("正在通过 PSN 建立与主机的连接…")
         Behavior on opacity { NumberAnimation { duration: 250 } }
     }
 
@@ -86,8 +86,8 @@ Rectangle {
             opacity: (textVisible && !cancelling) ? 1.0: 0.0
             visible: opacity
             text: {
-                var typeString = registOnly ? qsTr("automatic registration") : qsTr("remote connection via PSN")
-                qsTr("Press %1 to cancel %2").arg(Chiaki.controllers.length ? (root.controllerButton("circle").includes("deck") ? "B" : "Circle") : "escape or right-click").arg(typeString)
+                var typeString = registOnly ? qsTr("自动注册") : qsTr("通过 PSN 远程连接")
+                qsTr("按 %1 取消 %2").arg(Chiaki.controllers.length ? (root.controllerButton("circle").includes("deck") ? "B" : "Circle") : "escape or right-click").arg(typeString)
             }
         }
 
@@ -142,7 +142,7 @@ Rectangle {
         parent: Overlay.overlay
         x: Math.round((root.width - width) / 2)
         y: Math.round((root.height - height) / 2)
-        title: qsTr("Console Login PIN")
+        title: qsTr("主机登录 PIN 码")
         modal: true
         closePolicy: Popup.NoAutoClose
         standardButtons: Dialog.Ok | Dialog.Cancel
@@ -181,18 +181,18 @@ Rectangle {
             switch(Chiaki.connectState)
             {
                 case Chiaki.PsnConnectState.LinkingConsole:
-                    infoLabel.text = registOnly ? qsTr("Registering PlayStation console with chiaki-ng ...") : qsTr("Linking chiaki-ng with PlayStation console ...")
+                    infoLabel.text = registOnly ? qsTr("正在向 PlayStation 主机注册 chiaki-ng…") : qsTr("正在将 chiaki-ng 与 PlayStation 主机配对…")
                     view.allowClose = false
                     break
                 case Chiaki.PsnConnectState.RegisteringConsole:
                     view.registOnly = true;
                     break
                 case Chiaki.PsnConnectState.RegistrationFinished:
-                    infoLabel.text = qsTr("Successfully registered console")
+                    infoLabel.text = qsTr("主机注册成功")
                     failTimer.restart()
                     break
                 case Chiaki.PsnConnectState.DataConnectionStart:
-                    infoLabel.text = qsTr("Console Linked ... Establishing data connection with console over PSN ...")
+                    infoLabel.text = qsTr("主机已配对…正在通过 PSN 建立数据连接…")
                     view.allowClose = true
                     break
                 case Chiaki.PsnConnectState.DataConnectionFinished:
@@ -200,21 +200,21 @@ Rectangle {
                     break
                 case Chiaki.PsnConnectState.ConnectFailed:
                     if(!cancelling)
-                        infoLabel.text = qsTr("Connection over PSN failed closing ...")
+                        infoLabel.text = qsTr("通过 PSN 连接失败，正在关闭…")
                     failTimer.running = true
                     break
                 case Chiaki.PsnConnectState.ConnectFailedStart:
                     if(!cancelling)
-                        infoLabel.text = qsTr("PSN couldn't establish connection with PlayStation. Please try again ...")
+                        infoLabel.text = qsTr("PSN 无法与 PlayStation 建立连接，请重试…")
                     failTimer.running = true
                     break
                 case Chiaki.PsnConnectState.ConnectFailedConsoleUnreachable:
                     if(!cancelling)
-                        infoLabel.text = qsTr("Couldn't contact PlayStation over established connection, likely unsupported network type")
+                        infoLabel.text = qsTr("无法通过已建立的连接联系 PlayStation，可能是网络类型不受支持")
                     failTimer.running = true
                     break
                 case Chiaki.PsnConnectState.WaitingForInternet:
-                    infoLabel.text = qsTr("Establishing Internet Connection to PSN...")
+                    infoLabel.text = qsTr("正在建立到 PSN 的互联网连接…")
                     break
             }
         }

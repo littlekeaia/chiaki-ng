@@ -14,11 +14,11 @@ DialogView {
     property bool closing: false
     title: {
         if(expired)
-            qsTr("Credentials Expired: Refresh PSN Remote Connection")
+            qsTr("凭据已过期：刷新 PSN 远程连接")
         else
-            qsTr("Setup Automatic PSN Remote Connection")
+            qsTr("设置 PSN 自动远程连接")
     }
-    buttonText: qsTr("Setup")
+    buttonText: qsTr("设置")
     buttonEnabled: url.text.trim()
     buttonVisible: false
     onAccepted: {
@@ -94,7 +94,7 @@ DialogView {
                         Layout.fillHeight: true
                         Layout.preferredWidth: 350
                         flat: true
-                        text: "reload + clear cookies"
+                        text: "重新加载 + 清除 Cookie"
                         Image {
                             anchors {
                                 left: parent.left
@@ -137,7 +137,7 @@ DialogView {
                             source: "qrc:/icons/r1.svg"
                         }
                         focusPolicy: Qt.NoFocus
-                        text: "Use external browser"
+                        text: "使用外部浏览器"
                         onClicked: {
                             nativeTokenForm.visible = false;
                             psnTokenToolbar.visible = false;
@@ -189,7 +189,7 @@ DialogView {
                 columnSpacing: 20
                 Label {
                     id: nativeErrorHeader
-                    text: "Retrieving PSN account ID failed with error: "
+                    text: "获取 PSN 账号 ID 失败，错误："
                     Layout.fillHeight: true
                     Layout.preferredWidth: 400
                     Layout.leftMargin: 20
@@ -204,7 +204,7 @@ DialogView {
 
                 Label {
                     id: retryButton
-                    text: "Retry process"
+                    text: "重试流程"
                     Layout.fillHeight: true
                     Layout.preferredWidth: 300
                     Layout.leftMargin: 20
@@ -212,7 +212,7 @@ DialogView {
                 C.Button {
                     firstInFocusChain: true
                     lastInFocusChain: true
-                    text: "Retry"
+                    text: "重试"
                     onClicked: {
                         nativeErrorGrid.visible = false;
                         nativeErrorLabel.text = "";
@@ -303,7 +303,7 @@ DialogView {
             columnSpacing: 20
 
             Label {
-                text: qsTr("Open Web Browser with copied URL")
+                text: qsTr("在浏览器中打开已复制 URL")
                 visible: psnurl
             }
 
@@ -317,7 +317,7 @@ DialogView {
 
             C.Button {
                 id: copyUrl
-                text: qsTr("Click to Re-Copy URL")
+                text: qsTr("点击重新复制 URL")
                 onClicked: {
                     openurl.selectAll()
                     openurl.copy()
@@ -329,7 +329,7 @@ DialogView {
             }
 
             Label {
-                text: qsTr("Redirect URL from Web Browser")
+                text: qsTr("来自浏览器的重定向 URL")
             }
 
             TextField {
@@ -352,7 +352,7 @@ DialogView {
                 KeyNavigation.right: pasteUrl
                 C.Button {
                     id: pasteUrl
-                    text: qsTr("Click to Paste URL")
+                    text: qsTr("点击粘贴 URL")
                     anchors {
                         left: parent.right
                         verticalCenter: parent.verticalCenter
@@ -378,7 +378,7 @@ DialogView {
                 parent: Overlay.overlay
                 x: Math.round((root.width - width) / 2)
                 y: Math.round((root.height - height) / 2)
-                title: qsTr("Create PSN Automatic Remote Connection Token")
+                title: qsTr("创建 PSN 自动远程连接令牌")
                 modal: true
                 closePolicy: Popup.NoAutoClose
                 standardButtons: Dialog.Cancel

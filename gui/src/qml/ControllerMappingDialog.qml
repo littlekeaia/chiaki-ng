@@ -12,7 +12,7 @@ DialogView {
     property bool finalClosing: false
     property bool quitButtonMapping: true
     title: Chiaki.currentControllerType
-    buttonText: qsTr("Update Controller Mapping")
+    buttonText: qsTr("更新手柄按键映射")
     buttonEnabled: Chiaki.controllerMappingAltered
     onAccepted: {
         Chiaki.controllerMappingApply();
@@ -43,7 +43,7 @@ DialogView {
             id: analogStickMapping
             property bool firstInFocusChain: true
             property bool lastInFocusChain: false
-            text: qsTr("Allow mapping analog sticks and L2/R2")
+            text: qsTr("允许映射摇杆和 L2/R2")
             checked: Chiaki.enableAnalogStickMapping
             onToggled: Chiaki.enableAnalogStickMapping = checked
             Keys.onPressed: (event) => {
@@ -286,7 +286,7 @@ DialogView {
             parent: Overlay.overlay
             x: Math.round((root.width - width) / 2)
             y: Math.round((root.height - height) / 2)
-            title: qsTr("Button Capture")
+            title: qsTr("按键捕获")
             modal: true
             standardButtons: Dialog.Close
             closePolicy: Popup.CloseOnPressOutside
@@ -326,7 +326,7 @@ DialogView {
             Label {
                 Layout.preferredWidth: 400
                 id: buttonLabel
-                text: qsTr("Press any ") + Chiaki.currentControllerType + qsTr(" button to map to DualSense controller button or click close")
+                text: qsTr("按下任意 ") + Chiaki.currentControllerType + qsTr(" 键以映射到 DualSense 手柄按键，或点击关闭")
             }
         }
 

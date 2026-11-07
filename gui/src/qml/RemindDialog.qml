@@ -37,7 +37,7 @@ Dialog {
         if(!remotePlay && Chiaki.settings.remotePlayAsk)
         {
             if(!Chiaki.settings.psnRefreshToken || !Chiaki.settings.psnAuthToken || !Chiaki.settings.psnAuthTokenExpiry || !Chiaki.settings.psnAccountId)
-                root.showRemindDialog(qsTr("Remote Play via PSN"), qsTr("Would you like to connect to PSN?\nThis enables:\n- Automatic registration\n- Playing outside of your home network without port forwarding?") + "\n\n" + qsTr("(Note: If you select no now and want to do this later, go to the Config section of the settings.)"), true, () => root.showPSNTokenDialog(false));
+                root.showRemindDialog(qsTr("通过 PSN 遥控游玩"), qsTr("是否连接 PSN？\n启用后可：\n- 自动注册\n- 在家庭网络之外游玩而无需端口转发？") + "\n\n" + qsTr("（注意：若现在选否，之后可到设置的「配置」分区开启。）"), true, () => root.showPSNTokenDialog(false));
             else
                 Chiaki.settings.remotePlayAsk = false;
         }
@@ -70,7 +70,7 @@ Dialog {
             spacing: 20
 
             Button {
-                text: qsTr("Yes")
+                text: qsTr("是")
                 Material.background: Material.accent
                 flat: true
                 leftPadding: 50
@@ -92,7 +92,7 @@ Dialog {
 
             Button {
                 Material.background: Material.accent
-                text: qsTr("No")
+                text: qsTr("否")
                 flat: true
                 leftPadding: 50
                 onClicked: dialog.reject()
@@ -113,7 +113,7 @@ Dialog {
 
             Button {
                 Material.background: Material.accent
-                text: qsTr("Remind Me Later")
+                text: qsTr("稍后提醒我")
                 flat: true
                 leftPadding: 50
                 onClicked: dialog.close()

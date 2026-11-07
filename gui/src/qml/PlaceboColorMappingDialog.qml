@@ -37,8 +37,8 @@ DialogView {
         LinearLight
     }
     id: dialog
-    title: qsTr("Color Mapping Settings")
-    header: qsTr("* Defaults in () to right of value or marked with (Default)")
+    title: qsTr("色彩映射设置")
+    header: qsTr("* 括号内为默认值，或标注为（默认）")
     buttonVisible: false
     Keys.onPressed: (event) => {
         if (event.modifiers)
@@ -66,27 +66,27 @@ DialogView {
             }
 
             TabButton {
-                text: qsTr("Gamut Mapping 1")
+                text: qsTr("色域映射 1")
                 focusPolicy: Qt.NoFocus
             }
 
             TabButton {
-                text: qsTr("Gamut Mapping 2")
+                text: qsTr("色域映射 2")
                 focusPolicy: Qt.NoFocus
             }
 
             TabButton {
-                text: qsTr("Tone-mapping 1")
+                text: qsTr("色调映射 1")
                 focusPolicy: Qt.NoFocus
             }
 
             TabButton {
-                text: qsTr("Tone-mapping 2")
+                text: qsTr("色调映射 2")
                 focusPolicy: Qt.NoFocus
             }
 
            TabButton {
-                text: qsTr("Tone-mapping 3")
+                text: qsTr("色调映射 3")
                 focusPolicy: Qt.NoFocus
             }
         }
@@ -115,25 +115,25 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("Gamut Mapping Function:")
+                        text: qsTr("色域映射函数：")
                     }
 
                     C.ComboBox {
                         Layout.preferredWidth: 400
                         firstInFocusChain: true
-                        model: [qsTr("Clip"), qsTr("Perceptual"), qsTr("Soft Clip"), qsTr("Relative"), qsTr("Saturation"), qsTr("Absolute"), qsTr("Desaturate"), qsTr("Darken"), qsTr("Highlight"), qsTr("Linear")]
+                        model: [qsTr("截断"), qsTr("感知"), qsTr("软截断"), qsTr("相对"), qsTr("饱和度"), qsTr("绝对"), qsTr("去饱和"), qsTr("变暗"), qsTr("高光"), qsTr("线性")]
                         currentIndex: Chiaki.settings.placeboGamutMappingFunction
                         onActivated: index => Chiaki.settings.placeboGamutMappingFunction = index
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(Perceptual)")
+                        text: qsTr("（感知）")
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("Perceptual Deadzone:")
+                        text: qsTr("感知死区：")
                         visible: Chiaki.settings.placeboGamutMappingFunction == PlaceboColorMappingDialog.GamutMappingFunction.Perceptual
                     }
 
@@ -158,13 +158,13 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(0.30)")
+                        text: qsTr("（0.30）")
                         visible: Chiaki.settings.placeboGamutMappingFunction == PlaceboColorMappingDialog.GamutMappingFunction.Perceptual
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("Perceptual Strength:")
+                        text: qsTr("感知强度：")
                         visible: Chiaki.settings.placeboGamutMappingFunction == PlaceboColorMappingDialog.GamutMappingFunction.Perceptual
                     }
 
@@ -190,13 +190,13 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(0.80)")
+                        text: qsTr("（0.80）")
                         visible: Chiaki.settings.placeboGamutMappingFunction == PlaceboColorMappingDialog.GamutMappingFunction.Perceptual
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("Colorimetric Gamma:")
+                        text: qsTr("比色伽马：")
                         visible: Chiaki.settings.placeboGamutMappingFunction == PlaceboColorMappingDialog.GamutMappingFunction.Relative || Chiaki.settings.placeboGamutMappingFunction == PlaceboColorMappingDialog.GamutMappingFunction.Absolute || Chiaki.settings.placeboGamutMappingFunction == PlaceboColorMappingDialog.GamutMappingFunction.Darken
                     }
 
@@ -221,13 +221,13 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(1.80)")
+                        text: qsTr("（1.80）")
                         visible: Chiaki.settings.placeboGamutMappingFunction == PlaceboColorMappingDialog.GamutMappingFunction.Relative || Chiaki.settings.placeboGamutMappingFunction == PlaceboColorMappingDialog.GamutMappingFunction.Absolute || Chiaki.settings.placeboGamutMappingFunction == PlaceboColorMappingDialog.GamutMappingFunction.Darken
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("Soft Clip Knee:")
+                        text: qsTr("软截断拐点：")
                         visible: Chiaki.settings.placeboGamutMappingFunction == PlaceboColorMappingDialog.GamutMappingFunction.Perceptual || Chiaki.settings.placeboGamutMappingFunction == PlaceboColorMappingDialog.GamutMappingFunction.SoftClip
                     }
 
@@ -252,13 +252,13 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(0.70)")
+                        text: qsTr("（0.70）")
                         visible: Chiaki.settings.placeboGamutMappingFunction == PlaceboColorMappingDialog.GamutMappingFunction.Perceptual || Chiaki.settings.placeboGamutMappingFunction == PlaceboColorMappingDialog.GamutMappingFunction.SoftClip
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("Soft Clip Desaturation:")
+                        text: qsTr("软截断去饱和：")
                         visible: Chiaki.settings.placeboGamutMappingFunction == PlaceboColorMappingDialog.GamutMappingFunction.SoftClip
                     }
 
@@ -283,7 +283,7 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(0.35)")
+                        text: qsTr("（0.35）")
                         visible: Chiaki.settings.placeboGamutMappingFunction == PlaceboColorMappingDialog.GamutMappingFunction.SoftClip
                     }
                 }
@@ -303,7 +303,7 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("LUT 3D Size I:")
+                        text: qsTr("LUT 3D 尺寸 I：")
                     }
 
                     C.Slider {
@@ -326,12 +326,12 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(48)")
+                        text: qsTr("（48）")
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("LUT 3D Size C:")
+                        text: qsTr("LUT 3D 尺寸 C：")
                     }
 
                     C.Slider {
@@ -354,12 +354,12 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(32)")
+                        text: qsTr("（32）")
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("LUT 3D Size h:")
+                        text: qsTr("LUT 3D 尺寸 h：")
                     }
 
                     C.Slider {
@@ -382,39 +382,39 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(256)")
+                        text: qsTr("（256）")
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("LUT 3D Tricubic Enabled:")
+                        text: qsTr("LUT 3D 三三次插值启用：")
                     }
 
                     C.CheckBox {
-                        text: qsTr("Enable Tricubic Interpolation for 3DLUTs")
+                        text: qsTr("为 3DLUT 启用三三次插值")
                         checked: Chiaki.settings.placeboGamutMappingLut3dTricubicEnabled
                         onToggled: Chiaki.settings.placeboGamutMappingLut3dTricubicEnabled = checked
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(Unchecked)")
+                        text: qsTr("（未勾选）")
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("Gamut Expansion Enabled:")
+                        text: qsTr("色域扩展启用：")
                     }
 
                     C.CheckBox {
-                        text: qsTr("Enable Gamut Expansion")
+                        text: qsTr("启用色域扩展")
                         checked: Chiaki.settings.placeboGamutMappingGamutExpansionEnabled
                         onToggled: Chiaki.settings.placeboGamutMappingGamutExpansionEnabled = checked
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(Unchecked)")
+                        text: qsTr("（未勾选）")
                     }
                 }
             }
@@ -433,25 +433,25 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("Tone-mapping Function:")
+                        text: qsTr("色调映射函数：")
                     }
 
                     C.ComboBox {
                         Layout.preferredWidth: 400
                         firstInFocusChain: true
-                        model: [qsTr("Clip"), qsTr("Spline"), qsTr("St2094-40"), qsTr("St-2094-10"), qsTr("Bt2390"), qsTr("Bt2446a"), qsTr("Reinhard"), qsTr("Mobius"), qsTr("Hable"), qsTr("Gamma"), qsTr("Linear"), qsTr("Linear Light")]
+                        model: [qsTr("截断"), qsTr("样条"), qsTr("St2094-40"), qsTr("St-2094-10"), qsTr("Bt2390"), qsTr("Bt2446a"), qsTr("Reinhard"), qsTr("Mobius"), qsTr("Hable"), qsTr("伽马"), qsTr("线性"), qsTr("线性光")]
                         currentIndex: Chiaki.settings.placeboToneMappingFunction
                         onActivated: index => Chiaki.settings.placeboToneMappingFunction = index
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(Spline)")
+                        text: qsTr("（样条）")
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("Knee Adaptation:")
+                        text: qsTr("拐点自适应：")
                         visible: Chiaki.settings.placeboToneMappingFunction == PlaceboColorMappingDialog.ToneMappingFunction.Spline || Chiaki.settings.placeboToneMappingFunction == PlaceboColorMappingDialog.ToneMappingFunction.St209440 || Chiaki.settings.placeboToneMappingFunction == PlaceboColorMappingDialog.ToneMappingFunction.St209410
                     }
 
@@ -477,13 +477,13 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(0.40)")
+                        text: qsTr("（0.40）")
                         visible: Chiaki.settings.placeboToneMappingFunction == PlaceboColorMappingDialog.ToneMappingFunction.Spline || Chiaki.settings.placeboToneMappingFunction == PlaceboColorMappingDialog.ToneMappingFunction.St209440 || Chiaki.settings.placeboToneMappingFunction == PlaceboColorMappingDialog.ToneMappingFunction.St209410
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("Knee Minimum:")
+                        text: qsTr("拐点下限：")
                         visible: kneeadaptation.visible
                     }
 
@@ -508,13 +508,13 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(0.10)")
+                        text: qsTr("（0.10）")
                         visible: kneeadaptation.visible
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("Knee Maximum:")
+                        text: qsTr("拐点上限：")
                         visible: kneeadaptation.visible
                     }
 
@@ -539,13 +539,13 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(0.80)")
+                        text: qsTr("（0.80）")
                         visible: kneeadaptation.visible
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("Knee Default:")
+                        text: qsTr("拐点默认值：")
                     }
 
                     C.Slider {
@@ -568,12 +568,12 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(0.40)")
+                        text: qsTr("（0.40）")
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("Knee Offset:")
+                        text: qsTr("拐点偏移：")
                         visible: Chiaki.settings.placeboToneMappingFunction == PlaceboColorMappingDialog.ToneMappingFunction.Bt2390
                     }
 
@@ -598,7 +598,7 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(1.00)")
+                        text: qsTr("（1.00）")
                         visible: Chiaki.settings.placeboToneMappingFunction == PlaceboColorMappingDialog.ToneMappingFunction.Bt2390
                     }
                 }
@@ -618,7 +618,7 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("Slope Tuning:")
+                        text: qsTr("斜率调优：")
                         visible: Chiaki.settings.placeboToneMappingFunction == PlaceboColorMappingDialog.ToneMappingFunction.Spline
                     }
 
@@ -644,13 +644,13 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(1.5)")
+                        text: qsTr("（1.5）")
                         visible: Chiaki.settings.placeboToneMappingFunction == PlaceboColorMappingDialog.ToneMappingFunction.Spline
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("Slope Offset:")
+                        text: qsTr("斜率偏移：")
                         visible: Chiaki.settings.placeboToneMappingFunction == PlaceboColorMappingDialog.ToneMappingFunction.Spline
                     }
 
@@ -675,13 +675,13 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(0.20)")
+                        text: qsTr("（0.20）")
                         visible: Chiaki.settings.placeboToneMappingFunction == PlaceboColorMappingDialog.ToneMappingFunction.Spline
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("Spline Contrast:")
+                        text: qsTr("样条对比度：")
                         visible: Chiaki.settings.placeboToneMappingFunction == PlaceboColorMappingDialog.ToneMappingFunction.Spline
                     }
 
@@ -706,13 +706,13 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(0.50)")
+                        text: qsTr("（0.50）")
                         visible: Chiaki.settings.placeboToneMappingFunction == PlaceboColorMappingDialog.ToneMappingFunction.Spline
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("Reinhard Contrast:")
+                        text: qsTr("Reinhard 对比度：")
                         visible: Chiaki.settings.placeboToneMappingFunction == PlaceboColorMappingDialog.ToneMappingFunction.Reinhard
                     }
 
@@ -737,13 +737,13 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(0.50)")
+                        text: qsTr("（0.50）")
                         visible: Chiaki.settings.placeboToneMappingFunction == PlaceboColorMappingDialog.ToneMappingFunction.Reinhard
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("Linear Knee:")
+                        text: qsTr("线性拐点：")
                         visible: Chiaki.settings.placeboToneMappingFunction == PlaceboColorMappingDialog.ToneMappingFunction.Mobius || Chiaki.settings.placeboToneMappingFunction == PlaceboColorMappingDialog.ToneMappingFunction.Gamma
                     }
 
@@ -768,13 +768,13 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(0.3)")
+                        text: qsTr("（0.3）")
                         visible: Chiaki.settings.placeboToneMappingFunction == PlaceboColorMappingDialog.ToneMappingFunction.Mobius || Chiaki.settings.placeboToneMappingFunction == PlaceboColorMappingDialog.ToneMappingFunction.Gamma
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("Exposure:")
+                        text: qsTr("曝光：")
                         visible: Chiaki.settings.placeboToneMappingFunction == PlaceboColorMappingDialog.ToneMappingFunction.Linear || Chiaki.settings.placeboToneMappingFunction == PlaceboColorMappingDialog.ToneMappingFunction.LinearLight
                     }
 
@@ -799,7 +799,7 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(1.0)")
+                        text: qsTr("（1.0）")
                         visible: Chiaki.settings.placeboToneMappingFunction == PlaceboColorMappingDialog.ToneMappingFunction.Linear || Chiaki.settings.placeboToneMappingFunction == PlaceboColorMappingDialog.ToneMappingFunction.LinearLight
                     }
                 }
@@ -819,41 +819,41 @@ DialogView {
 
                    Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("Inverse Tone-mapping Enabled:")
+                        text: qsTr("逆色调映射启用：")
                     }
 
                     C.CheckBox {
-                        text: qsTr("Enable Inverse Tone-mapping")
+                        text: qsTr("启用逆色调映射")
                         checked: Chiaki.settings.placeboToneMappingInverseToneMappingEnabled
                         onToggled: Chiaki.settings.placeboToneMappingInverseToneMappingEnabled = checked
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(Unchecked)")
+                        text: qsTr("（未勾选）")
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("Tone-mapping Metadata:")
+                        text: qsTr("色调映射元数据：")
                     }
 
                     C.ComboBox {
                         Layout.preferredWidth: 400
                         firstInFocusChain: true
-                        model: [qsTr("Any"), qsTr("None"), qsTr("HDR10"), qsTr("HDR10 Plus"), qsTr("Cie_y")]
+                        model: [qsTr("任意"), qsTr("无"), qsTr("HDR10"), qsTr("HDR10 Plus"), qsTr("Cie_y")]
                         currentIndex: Chiaki.settings.placeboToneMappingMetadata
                         onActivated: index => Chiaki.settings.placeboToneMappingMetadata = index
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(Any)")
+                        text: qsTr("（任意）")
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("Tone LUT Size:")
+                        text: qsTr("色调 LUT 尺寸：")
                     }
 
                     C.Slider {
@@ -876,12 +876,12 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(256)")
+                        text: qsTr("（256）")
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("Contrast Recovery:")
+                        text: qsTr("对比度恢复：")
                     }
 
                     C.Slider {
@@ -904,12 +904,12 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(0.30)")
+                        text: qsTr("（0.30）")
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("Contrast Smoothness:")
+                        text: qsTr("对比度平滑度：")
                     }
 
                     C.Slider {
@@ -932,7 +932,7 @@ DialogView {
 
                     Label {
                         Layout.alignment: Qt.AlignRight
-                        text: qsTr("(3.5)")
+                        text: qsTr("（3.5）")
                     }
                 }
             }

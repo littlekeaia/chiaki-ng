@@ -137,7 +137,7 @@ Window {
                         horizontalCenter: parent.horizontalCenter
                         leftMargin: 10
                     }
-                    text: ((parent.value / 128.0) * 100).toFixed(0) + qsTr("% Volume")
+                    text: ((parent.value / 128.0) * 100).toFixed(0) + qsTr("% 音量")
                 }
             }
 
@@ -149,7 +149,7 @@ Window {
             ToolButton {
                 id: muteButton
                 Layout.rightMargin: 20
-                text: qsTr("Mic")
+                text: qsTr("麦克风")
                 padding: 10
                 checkable: true
                 enabled: Chiaki.session && Chiaki.session.connected
@@ -163,7 +163,7 @@ Window {
 
             ToolButton {
                 id: zoomButton
-                text: qsTr("Zoom")
+                text: qsTr("缩放")
                 padding: 10
                 checkable: true
                 checked: Chiaki.window.videoMode == ChiakiWindow.VideoMode.Zoom
@@ -196,7 +196,7 @@ Window {
                     }
                     text: {
                         if (parent.value === -1)
-                            return qsTr("No Black Bars");
+                            return qsTr("无黑边");
                         if (parent.value >= 0)
                             return qsTr((parent.value + 1).toFixed(2)) + qsTr(" x");
                         return qsTr(parent.value.toFixed(2)) + qsTr(" x");
@@ -212,7 +212,7 @@ Window {
             ToolButton {
                 id: stretchButton
                 Layout.rightMargin: 50
-                text: qsTr("Stretch")
+                text: qsTr("拉伸")
                 padding: 10
                 checkable: true
                 checked: Chiaki.window.videoMode == ChiakiWindow.VideoMode.Stretch
@@ -225,7 +225,7 @@ Window {
 
             ToolButton {
                 id: defaultButton
-                text: qsTr("Default")
+                text: qsTr("默认")
                 padding: 10
                 checkable: true
                 checked: Chiaki.window.videoPreset == ChiakiWindow.VideoPreset.Default
@@ -246,7 +246,7 @@ Window {
 
             ToolButton {
                 id: highQualityButton
-                text: qsTr("High Quality")
+                text: qsTr("高质量")
                 padding: 10
                 checkable: true
                 checked: Chiaki.window.videoPreset == ChiakiWindow.VideoPreset.HighQuality
@@ -262,7 +262,7 @@ Window {
 
             ToolButton {
                 id: highQualitySpatialButton
-                text: qsTr("HQ + Spatial")
+                text: qsTr("HQ + 空间")
                 padding: 10
                 checkable: true
                 checked: Chiaki.window.videoPreset == ChiakiWindow.VideoPreset.HighQualitySpatial
@@ -278,7 +278,7 @@ Window {
 
             ToolButton {
                 id: highQualityAdvancedSpatialButton
-                text: qsTr("HQ + Adv Spatial")
+                text: qsTr("HQ + 高级空间")
                 padding: 10
                 checkable: true
                 checked: Chiaki.window.videoPreset == ChiakiWindow.VideoPreset.HighQualityAdvancedSpatial
@@ -299,7 +299,7 @@ Window {
 
             ToolButton {
                 id: customButton
-                text: qsTr("Custom")
+                text: qsTr("自定义")
                 Layout.rightMargin: 40
                 padding: 10
                 checkable: true
@@ -316,7 +316,7 @@ Window {
 
             ToolButton {
                 id: displaySettingsButton
-                text: qsTr("Display")
+                text: qsTr("显示")
                 padding: 10
                 checkable: false
                 icon.source: "qrc:/icons/settings-20px.svg"
@@ -375,8 +375,8 @@ Window {
                 if (!Chiaki.session)
                     return "";
                 if (Chiaki.session.connected)
-                    return qsTr("Connected to <b>%1</b>").arg(Chiaki.settings.streamerMode ? "hidden" : Chiaki.session.host);
-                return qsTr("Connecting to <b>%1</b>").arg(Chiaki.settings.streamerMode ? "hidden" : Chiaki.session.host);
+                    return qsTr("已连接到 <b>%1</b>").arg(Chiaki.settings.streamerMode ? "hidden" : Chiaki.session.host);
+                return qsTr("正在连接到 <b>%1</b>").arg(Chiaki.settings.streamerMode ? "hidden" : Chiaki.session.host);
             }
 
             RowLayout {
@@ -387,7 +387,7 @@ Window {
                 }
 
                 Label {
-                    text: qsTr("packet loss")
+                    text: qsTr("丢包")
                     font.pixelSize: 15
                     opacity: parent.visible && Chiaki.session ? 1.0 : 0.0
                     visible: opacity
@@ -409,7 +409,7 @@ Window {
 
                 Label {
                     Layout.leftMargin: droppedFramesLabel.width + 6
-                    text: qsTr("dropped frames")
+                    text: qsTr("丢帧")
                     font.pixelSize: 15
                     opacity: parent.visible && Chiaki.window.droppedFrames ? 1.0 : 0.0
                     visible: opacity

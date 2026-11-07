@@ -177,16 +177,16 @@ Item {
                     if(Chiaki.settings.dpadTouchEnabled)
                     {
                         if(Chiaki.settings.audioVideoDisabled == 0x01)
-                            qsTr("Audio Disabled in settings\n") + qsTr("Press %1 to open stream menu").arg(Chiaki.controllers.length ? Chiaki.settings.stringForStreamMenuShortcut() : "Ctrl+O") + "\n" + qsTr("Press %1 to toggle between regular dpad and dpad touch").arg(Chiaki.settings.stringForDpadShortcut())
+                            qsTr("设置中已禁用音频\n") + qsTr("按 %1 打开串流菜单").arg(Chiaki.controllers.length ? Chiaki.settings.stringForStreamMenuShortcut() : "Ctrl+O") + "\n" + qsTr("按 %1 在普通十字键与十字键触摸间切换").arg(Chiaki.settings.stringForDpadShortcut())
                         else
-                            qsTr("Press %1 to open stream menu").arg(Chiaki.controllers.length ? Chiaki.settings.stringForStreamMenuShortcut() : "Ctrl+O") + "\n" + qsTr("Press %1 to toggle between regular dpad and dpad touch").arg(Chiaki.settings.stringForDpadShortcut())
+                            qsTr("按 %1 打开串流菜单").arg(Chiaki.controllers.length ? Chiaki.settings.stringForStreamMenuShortcut() : "Ctrl+O") + "\n" + qsTr("按 %1 在普通十字键与十字键触摸间切换").arg(Chiaki.settings.stringForDpadShortcut())
                     }
                     else
                     {
                         if(Chiaki.settings.audioVideoDisabled == 0x01)
-                            qsTr("Audio Disabled in settings\n") + qsTr("Press %1 to open stream menu").arg(Chiaki.controllers.length ? Chiaki.settings.stringForStreamMenuShortcut() : "Ctrl+O")
+                            qsTr("设置中已禁用音频\n") + qsTr("按 %1 打开串流菜单").arg(Chiaki.controllers.length ? Chiaki.settings.stringForStreamMenuShortcut() : "Ctrl+O")
                         else
-                            qsTr("Press %1 to open stream menu").arg(Chiaki.controllers.length ? Chiaki.settings.stringForStreamMenuShortcut() : "Ctrl+O")
+                            qsTr("按 %1 打开串流菜单").arg(Chiaki.controllers.length ? Chiaki.settings.stringForStreamMenuShortcut() : "Ctrl+O")
                     }
                 }
                 visible: sessionLoading
@@ -198,7 +198,7 @@ Item {
                     bottom: spinner.top
                     horizontalCenter: spinner.horizontalCenter
                 }
-                text: (Chiaki.settings.audioVideoDisabled & 0x01) ? qsTr("Audio and Video Disabled") : qsTr("Video Disabled")
+                text: (Chiaki.settings.audioVideoDisabled & 0x01) ? qsTr("音频和视频已禁用") : qsTr("视频已禁用")
                 font.pixelSize: 24
                 visible: !sessionLoading && !sessionError && (Chiaki.settings.audioVideoDisabled & 0x02)
             }
@@ -212,7 +212,7 @@ Item {
                 }
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 20
-                text: (Chiaki.settings.audioVideoDisabled & 0x01) ? qsTr("You have disabled audio and video in your settings.\nTo re-enable change Audio/Video to Audio and Video Enabled in the General tab of the settings.") : qsTr("You have disabled video in your settings.\nTo re-enable change Audio/Video to Audio and Video Enabled in the General tab of the settings.")
+                text: (Chiaki.settings.audioVideoDisabled & 0x01) ? qsTr("你已在设置中禁用音频和视频。\n如需重新启用，请在设置的「通用」页把「音频/视频」改为「音频和视频已启用」。") : qsTr("你已在设置中禁用视频。\n如需重新启用，请在设置的「通用」页把「音频/视频」改为「音频和视频已启用」。")
                 visible: !sessionLoading && !sessionError && (Chiaki.settings.audioVideoDisabled & 0x02)
             }
 
@@ -263,14 +263,14 @@ Item {
 
         Label {
             Layout.alignment: Qt.AlignCenter
-            text: qsTr("The screen contains content that can't be displayed using Remote Play.")
+            text: qsTr("画面包含无法通过遥控游玩显示的内容。")
         }
 
         Button {
             id: goToHomeButton
             Layout.alignment: Qt.AlignCenter
             Layout.preferredHeight: 60
-            text: qsTr("Go to Home Screen")
+            text: qsTr("转到主屏幕")
             Material.background: activeFocus ? parent.Material.accent : undefined
             Material.roundedScale: Material.SmallScale
             onClicked: Chiaki.sessionGoHome()
@@ -336,7 +336,7 @@ Item {
 
                 Label {
                     Layout.alignment: Qt.AlignRight
-                    text: qsTr("queue depth avg")
+                    text: qsTr("队列深度平均值")
                     font.pixelSize: 15
                     opacity: Chiaki.session ? 1 : 0
                     visible: opacity > 0
@@ -358,7 +358,7 @@ Item {
 
                 Label {
                     Layout.alignment: Qt.AlignRight
-                    text: qsTr("pending frame age")
+                    text: qsTr("待处理帧时长")
                     font.pixelSize: 15
                     opacity: Chiaki.session ? 1 : 0
                     visible: opacity > 0
@@ -381,7 +381,7 @@ Item {
                 Label {
                     Layout.alignment: Qt.AlignRight
                     id: statsPacketLossLabel
-                    text: qsTr("packet loss")
+                    text: qsTr("丢包")
                     font.pixelSize: 15
                     opacity: Chiaki.session ? 1 : 0
                     visible: opacity > 0
@@ -403,7 +403,7 @@ Item {
 
                 Label {
                     Layout.alignment: Qt.AlignRight
-                    text: qsTr("dropped frames")
+                    text: qsTr("丢帧")
                     font.pixelSize: 15
                     opacity: Chiaki.session ? 1 : 0
                     visible: opacity > 0
@@ -426,7 +426,7 @@ Item {
 
                 Label {
                     Layout.alignment: Qt.AlignRight
-                    text: qsTr("lost frames")
+                    text: qsTr("丢失帧数")
                     font.pixelSize: 15
                     opacity: Chiaki.session ? 1 : 0
                     visible: opacity > 0
@@ -524,7 +524,7 @@ Item {
                         leftMargin: 10
                     }
                     text: {
-                        ((parent.value / 128.0) * 100).toFixed(0) + qsTr("% Volume")
+                        ((parent.value / 128.0) * 100).toFixed(0) + qsTr("% 音量")
                     }
                 }
             }
@@ -537,7 +537,7 @@ Item {
             ToolButton {
                 id: muteButton
                 Layout.rightMargin: 20
-                text: qsTr("Mic")
+                text: qsTr("麦克风")
                 padding: 10
                 checkable: true
                 enabled: Chiaki.session && Chiaki.session.connected
@@ -551,7 +551,7 @@ Item {
 
             ToolButton {
                 id: zoomButton
-                text: qsTr("Zoom")
+                text: qsTr("缩放")
                 padding: 10
                 checkable: true
                 checked: Chiaki.window.videoMode == ChiakiWindow.VideoMode.Zoom
@@ -588,7 +588,7 @@ Item {
                     }
                     text: {
                         if(parent.value === -1)
-                            qsTr("No Black Bars")
+                            qsTr("无黑边")
                         else if(parent.value >= 0)
                             qsTr((parent.value + 1).toFixed(2)) + qsTr(" x")
                         else
@@ -606,7 +606,7 @@ Item {
             ToolButton {
                 id: stretchButton
                 Layout.rightMargin: 50
-                text: qsTr("Stretch")
+                text: qsTr("拉伸")
                 padding: 10
                 checkable: true
                 checked: Chiaki.window.videoMode == ChiakiWindow.VideoMode.Stretch
@@ -624,7 +624,7 @@ Item {
 
             ToolButton {
                 id: defaultButton
-                text: qsTr("Default")
+                text: qsTr("默认")
                 padding: 10
                 checkable: true
                 checked: Chiaki.window.videoPreset == ChiakiWindow.VideoPreset.Default
@@ -645,7 +645,7 @@ Item {
 
             ToolButton {
                 id: highQualityButton
-                text: qsTr("High Quality")
+                text: qsTr("高质量")
                 padding: 10
                 checkable: true
                 checked: Chiaki.window.videoPreset == ChiakiWindow.VideoPreset.HighQuality
@@ -661,7 +661,7 @@ Item {
 
             ToolButton {
                 id: highQualitySpatialButton
-                text: qsTr("HQ + Spatial")
+                text: qsTr("HQ + 空间")
                 padding: 10
                 checkable: true
                 checked: Chiaki.window.videoPreset == ChiakiWindow.VideoPreset.HighQualitySpatial
@@ -677,7 +677,7 @@ Item {
 
             ToolButton {
                 id: highQualityAdvancedSpatialButton
-                text: qsTr("HQ + Adv Spatial")
+                text: qsTr("HQ + 高级空间")
                 padding: 10
                 checkable: true
                 checked: Chiaki.window.videoPreset == ChiakiWindow.VideoPreset.HighQualityAdvancedSpatial
@@ -698,7 +698,7 @@ Item {
 
             ToolButton {
                 id: customButton
-                text: qsTr("Custom")
+                text: qsTr("自定义")
                 Layout.rightMargin: 40
                 padding: 10
                 checkable: true
@@ -715,7 +715,7 @@ Item {
 
             ToolButton {
                 id: displaySettingsButton
-                text: qsTr("Display")
+                text: qsTr("显示")
                 padding: 10
                 checkable: false
                 icon.source: "qrc:/icons/settings-20px.svg";
@@ -786,8 +786,8 @@ Item {
                     if (!Chiaki.session)
                         return "";
                     if (Chiaki.session.connected)
-                        return qsTr("Connected to <b>%1</b>").arg(Chiaki.settings.streamerMode ? "hidden" : Chiaki.session.host);
-                    return qsTr("Connecting to <b>%1</b>").arg(Chiaki.settings.streamerMode ? "hidden" : Chiaki.session.host);
+                        return qsTr("已连接到 <b>%1</b>").arg(Chiaki.settings.streamerMode ? "hidden" : Chiaki.session.host);
+                    return qsTr("正在连接到 <b>%1</b>").arg(Chiaki.settings.streamerMode ? "hidden" : Chiaki.session.host);
                 }
 
                 RowLayout {
@@ -798,7 +798,7 @@ Item {
                     }
 
                     Label {
-                        text: qsTr("packet loss")
+                        text: qsTr("丢包")
                         font.pixelSize: 15
                         opacity: parent.visible && Chiaki.session ? 1.0 : 0.0
                         visible: opacity
@@ -820,7 +820,7 @@ Item {
 
                     Label {
                         Layout.leftMargin: droppedFramesLabel.width + 6
-                        text: qsTr("dropped frames")
+                        text: qsTr("丢帧")
                         font.pixelSize: 15
                         opacity: parent.visible && Chiaki.window.droppedFrames ? 1.0 : 0.0
                         visible: opacity
@@ -933,7 +933,7 @@ Item {
         ColumnLayout {
             Label {
                 Layout.alignment: Qt.AlignCenter
-                text: qsTr("Disconnect Session")
+                text: qsTr("断开连接")
                 font.bold: true
                 font.pixelSize: 24
             }
@@ -941,7 +941,7 @@ Item {
             Label {
                 Layout.topMargin: 10
                 Layout.alignment: Qt.AlignCenter
-                text: qsTr("Do you want the Console to go into sleep mode?")
+                text: qsTr("是否让主机进入睡眠模式？")
                 font.pixelSize: 20
             }
 
@@ -955,7 +955,7 @@ Item {
                     Layout.preferredWidth: 200
                     Layout.minimumHeight: 80
                     Layout.maximumHeight: 80
-                    text: qsTr("Sleep")
+                    text: qsTr("睡眠")
                     font.pixelSize: 24
                     Material.roundedScale: Material.SmallScale
                     Material.background: activeFocus ? parent.Material.accent : undefined
@@ -974,7 +974,7 @@ Item {
                     Layout.preferredWidth: 200
                     Layout.minimumHeight: 80
                     Layout.maximumHeight: 80
-                    text: qsTr("No")
+                    text: qsTr("否")
                     font.pixelSize: 24
                     Material.roundedScale: Material.SmallScale
                     Material.background: activeFocus ? parent.Material.accent : undefined
@@ -1032,7 +1032,7 @@ Item {
 
             Label {
                 Layout.alignment: Qt.AlignCenter
-                text: qsTr("Disconnect Session")
+                text: qsTr("断开连接")
                 font.bold: true
                 font.pixelSize: 24
             }
@@ -1040,7 +1040,7 @@ Item {
             Label {
                 Layout.topMargin: 10
                 Layout.alignment: Qt.AlignCenter
-                text: qsTr("Do you want the Console to go into sleep mode?")
+                text: qsTr("是否让主机进入睡眠模式？")
                 font.pixelSize: 20
             }
 
@@ -1054,7 +1054,7 @@ Item {
                     Layout.preferredWidth: 200
                     Layout.minimumHeight: 80
                     Layout.maximumHeight: 80
-                    text: qsTr("Sleep")
+                    text: qsTr("睡眠")
                     font.pixelSize: 24
                     Material.roundedScale: Material.SmallScale
                     Material.background: activeFocus ? parent.Material.accent : undefined
@@ -1072,7 +1072,7 @@ Item {
                     Layout.preferredWidth: 200
                     Layout.minimumHeight: 80
                     Layout.maximumHeight: 80
-                    text: qsTr("No")
+                    text: qsTr("否")
                     font.pixelSize: 24
                     Material.roundedScale: Material.SmallScale
                     Material.background: activeFocus ? parent.Material.accent : undefined
@@ -1093,7 +1093,7 @@ Item {
         parent: Overlay.overlay
         x: Math.round((root.width - width) / 2)
         y: Math.round((root.height - height) / 2)
-        title: qsTr("Console Login PIN")
+        title: qsTr("主机登录 PIN 码")
         modal: true
         closePolicy: Popup.NoAutoClose
         standardButtons: Dialog.Ok | Dialog.Cancel
@@ -1168,7 +1168,7 @@ Item {
 
             Label {
                 Layout.alignment: Qt.AlignCenter
-                text: qsTr("Console Login PIN")
+                text: qsTr("主机登录 PIN 码")
                 font.bold: true
                 font.pixelSize: 24
             }
@@ -1189,7 +1189,7 @@ Item {
                 spacing: 16
 
                 Button {
-                    text: qsTr("Cancel")
+                    text: qsTr("取消")
                     Keys.onReturnPressed: clicked()
                     onClicked: {
                         separateSessionPinWindow.visible = false;
@@ -1199,7 +1199,7 @@ Item {
 
                 Button {
                     id: separatePinOkButton
-                    text: qsTr("OK")
+                    text: qsTr("确定")
                     enabled: separatePinField.acceptableInput
                     Keys.onReturnPressed: clicked()
                     onClicked: {
